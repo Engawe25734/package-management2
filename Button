@@ -1,0 +1,9 @@
+ <button
+
+        class="settings-btn"
+
+        onclick="openSettings()">
+
+        ⚙️
+
+    </button>
