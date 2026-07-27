@@ -1,0 +1,52 @@
+<div
+id="notification-page"
+class="settings-page hidden">
+
+<h2>
+
+Notifications
+
+</h2>
+
+<label>
+
+Message Notifications
+
+</label>
+
+<input
+id="message-notifications"
+type="checkbox"
+checked>
+
+<label>
+
+Call Notifications
+
+</label>
+
+<input
+id="call-notifications"
+type="checkbox"
+checked>
+
+<label>
+
+Group Notifications
+
+</label>
+
+<input
+id="group-notifications"
+type="checkbox"
+checked>
+
+<button
+class="primary-btn"
+onclick="saveNotifications()">
+
+Save
+
+</button>
+
+</div>
