@@ -1,0 +1,72 @@
+def create_user(
+
+    username,
+
+    phone,
+
+    password_hash
+
+):
+
+
+    conn = get_connection()
+
+    cursor = conn.cursor()
+
+
+    cursor.execute(
+
+    """
+
+    INSERT INTO users
+
+    (username,phone,password_hash)
+
+    VALUES (?,?,?)
+
+    """,
+
+    (
+
+        username,
+
+        phone,
+
+        password_hash
+
+    )
+
+    )
+
+
+    user_id = cursor.lastrowid
+
+
+
+    cursor.execute(
+
+    """
+
+    INSERT INTO profile_settings
+
+    (user_id)
+
+    VALUES (?)
+
+    """,
+
+    (
+
+        user_id,
+
+    )
+
+    )
+
+
+    conn.commit()
+
+    conn.close()
+
+
+    return user_id
