@@ -1,0 +1,9 @@
+cursor.execute("""
+ALTER TABLE users
+ADD COLUMN avatar TEXT DEFAULT '/static/default-avatar.png'
+""")
+
+cursor.execute("""
+ALTER TABLE users
+ADD COLUMN bio TEXT DEFAULT ''
+""")
