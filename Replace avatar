@@ -1,0 +1,8 @@
+<div class="avatar">
+
+<img
+id="profile-picture"
+src="/static/default-avatar.png"
+alt="Profile">
+
+</div>
