@@ -7,3 +7,59 @@
         ⚙️
 
     </button>
+
+.message-input-area{
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px;
+    background:white;
+    border-top:1px solid #ddd;
+
+}
+
+.message-input-area input{
+
+    flex:1;
+    padding:14px 20px;
+    border-radius:30px;
+    border:1px solid #ddd;
+    outline:none;
+
+}
+
+.emoji-btn,
+.send-btn,
+.settings-btn{
+
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:20px;
+
+}
+
+.emoji-btn{
+
+    background:#f2f2f2;
+
+}
+
+.send-btn{
+
+    background:#25D366;
+    color:white;
+
+}
+
+.settings-btn{
+
+    background:#075E54;
+    color:white;
+
+}
+
