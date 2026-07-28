@@ -60,4 +60,96 @@ Inside your settings menu:
 
 </button>
 
+adding privacy controls if not added before
+Inside your existing settings panel:
+<div class="settings-page">
+
+<h2>
+Privacy
+</h2>
+
+
+<label>
+Last Seen
+</label>
+
+<select id="last-seen">
+
+<option value="everyone">
+Everyone
+</option>
+
+<option value="contacts">
+My Contacts
+</option>
+
+<option value="nobody">
+Nobody
+</option>
+
+</select>
+
+
+
+<label>
+Online Status
+</label>
+
+<select id="online-status">
+
+<option value="everyone">
+Everyone
+</option>
+
+<option value="nobody">
+Nobody
+</option>
+
+</select>
+
+
+
+<label>
+Profile Photo
+</label>
+
+<select id="photo-privacy">
+
+<option value="everyone">
+Everyone
+</option>
+
+<option value="contacts">
+My Contacts
+</option>
+
+<option value="nobody">
+Nobody
+</option>
+
+</select>
+
+
+
+<label>
+
+<input 
+type="checkbox"
+id="read-receipts"
+checked
+>
+
+Read Receipts
+
+</label>
+
+
+<button onclick="savePrivacy()">
+
+Save
+
+</button>
+
+
+</div>
 
