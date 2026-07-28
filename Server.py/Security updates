@@ -24,3 +24,30 @@ return {
     "app_lock": account["app_lock"]
 
 }
+Step 6 — Verify token in server.py
+
+Change:
+@app.websocket("/ws/{username}")
+async def websocket_endpoint(
+    websocket:WebSocket,
+    username:str
+):
+replace with:
+@app.websocket("/ws/{username}")
+async def websocket_endpoint(
+    websocket:WebSocket,
+    username:str,
+    token:str
+):
+add this:
+from auth import verify_token
+inside the function below
+payload = verify_token(token)
+
+
+if not payload:
+
+    await websocket.close()
+
+    return
+
