@@ -81,3 +81,55 @@ def verify_pin(pin, pin_hash):
         pin,
         pin_hash
     )
+place the code above below this functions
+# ------------------------------------
+# Password functions
+# ------------------------------------
+
+def hash_password(password: str):
+
+    return password_context.hash(password)
+
+
+def verify_password(
+    plain_password,
+    hashed_password
+):
+
+    return password_context.verify(
+        plain_password,
+        hashed_password
+    )
+
+
+# =====================================
+# APP LOCK PIN
+# =====================================
+
+def hash_pin(pin: str):
+    """
+    Encrypt PIN before saving
+    """
+    return password_context.hash(pin)
+
+
+def verify_pin(pin, pin_hash):
+    """
+    Verify entered PIN
+    """
+    return password_context.verify(
+        pin,
+        pin_hash
+    )
+
+
+# ------------------------------------
+# User registration
+# ------------------------------------
+
+def register_user(
+    username,
+    phone,
+    password
+):
+    ...
