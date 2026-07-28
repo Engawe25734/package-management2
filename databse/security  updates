@@ -104,3 +104,53 @@ ALTER TABLE users
 ADD COLUMN bio_privacy TEXT DEFAULT 'everyone'
 """)
 
+database.py add privacy controls function 
+def update_privacy_settings(
+    username,
+    last_seen,
+    online,
+    photo,
+    read_receipts,
+    bio
+):
+
+    conn = get_connection()
+
+    cursor = conn.cursor()
+
+
+    cursor.execute("""
+
+    UPDATE users
+
+    SET
+
+    last_seen_privacy=?,
+
+    online_privacy=?,
+
+    photo_privacy=?,
+
+    read_receipts=?,
+
+    bio_privacy=?
+
+    WHERE username=?
+
+    """,
+
+    (
+    last_seen,
+    online,
+    photo,
+    read_receipts,
+    bio,
+    username
+    ))
+
+
+    conn.commit()
+
+    conn.close()
+
+
