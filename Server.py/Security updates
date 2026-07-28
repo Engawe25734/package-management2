@@ -2,3 +2,25 @@ check if these are present if not add them
 from api_routes import router
 app.include_router(router)
 at this point please test your endpoints 
+Your current login returns:
+return {
+
+    "access_token": token,
+
+    "token_type":"bearer",
+
+    "username":account["username"]
+
+}
+repace with 
+return {
+
+    "access_token": token,
+
+    "token_type":"bearer",
+
+    "username":account["username"],
+
+    "app_lock": account["app_lock"]
+
+}
