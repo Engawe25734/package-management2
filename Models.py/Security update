@@ -1,0 +1,26 @@
+add this import at the top 
+from pydantic import BaseModel
+add this portion at the bottom
+# =====================================
+# APP LOCK MODELS
+# =====================================
+
+class SetPinRequest(BaseModel):
+
+    user_id: int
+
+    pin: str
+
+
+
+class UnlockPinRequest(BaseModel):
+
+    user_id: int
+
+    pin: str
+
+
+
+class DisablePinRequest(BaseModel):
+
+    user_id: int
