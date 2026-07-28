@@ -1,0 +1,87 @@
+at the top find this 
+from fastapi import APIRouter
+abs add this 
+from auth import (
+    set_app_pin,
+    unlock_app
+)
+
+from database import enable_app_lock
+also import the models
+from models import (
+    SetPinRequest,
+    UnlockPinRequest,
+    DisablePinRequest
+)
+now add this at the bottom
+# =====================================
+# ENABLE APP LOCK
+# =====================================
+
+@router.post("/security/set-pin")
+def set_pin(
+    data:SetPinRequest
+):
+
+    return set_app_pin(
+
+        data.user_id,
+
+        data.pin
+
+    )
+
+
+
+# =====================================
+# UNLOCK APP
+# =====================================
+
+@router.post("/security/unlock")
+def unlock(
+    data:UnlockPinRequest
+):
+
+    result = unlock_app(
+
+        data.user_id,
+
+        data.pin
+
+    )
+
+
+    return {
+
+        "success":result
+
+    }
+
+
+
+# =====================================
+# DISABLE APP LOCK
+# =====================================
+
+@router.post("/security/disable-pin")
+def disable_pin(
+    data:DisablePinRequest
+):
+
+    enable_app_lock(
+
+        data.user_id,
+
+        False
+
+    )
+
+
+    return {
+
+        "status":"success",
+
+        "message":"App lock disabled"
+
+    }
+    
