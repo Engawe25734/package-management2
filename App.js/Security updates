@@ -226,3 +226,94 @@ if(response.ok){
 
 
 }
+Step 1 — Add token storage in app.js
+
+Find where you set:
+token = data.access_token;
+Replace with:
+token = data.access_token;
+
+
+// SAVE LOGIN SESSION
+
+localStorage.setItem(
+    "chatme_token",
+    token
+);
+
+
+localStorage.setItem(
+    "chatme_username",
+    username
+);
+Step 2 — Add automatic login restore in app.js
+
+Place near the top of app.js after your variables:
+// =====================================
+// RESTORE USER SESSION
+// =====================================
+
+function restoreSession(){
+
+
+    const savedToken =
+    localStorage.getItem(
+        "chatme_token"
+    );
+
+
+    const savedUsername =
+    localStorage.getItem(
+        "chatme_username"
+    );
+
+
+
+    if(savedToken && savedUsername){
+
+
+        token = savedToken;
+
+        username = savedUsername;
+
+
+        openChat();
+
+
+    }
+
+}
+
+
+window.onload = restoreSession;
+Step 3 — Add logout function in app.js
+
+Put it with your other account functions:
+// =====================================
+// LOGOUT
+// =====================================
+
+
+function logout(){
+
+
+    localStorage.removeItem(
+        "chatme_token"
+    );
+
+
+    localStorage.removeItem(
+        "chatme_username"
+    );
+
+
+    if(socket){
+
+        socket.close();
+
+    }
+
+
+    location.reload();
+
+}
