@@ -226,6 +226,10 @@ if(response.ok){
 
 
 }
+i ended editing here at app.js ,i did edited style.css.index.html,auth.py,api-routes.py and i still have server.py,models.py and databse.py
+
+
+
 Step 1 — Add token storage in app.js
 
 Find where you set:
