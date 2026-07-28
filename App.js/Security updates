@@ -171,6 +171,58 @@ async function verifyAppPin(){
             "Wrong PIN"
         );
 
+
     }
+
+}
+
+Find the part where you handle login response. It may look like:
+if(response.ok){
+
+    const data = await response.json();
+
+    username = data.username;
+
+    token = data.access_token;
+
+    openChat();
+
+}
+replace with 
+if(response.ok){
+
+    const data = await response.json();
+
+
+    username = data.username;
+
+    token = data.access_token;
+
+
+
+    // CHECK APP LOCK SETTING
+
+    if(data.app_lock === 1){
+
+
+        document
+        .getElementById("app-lock-screen")
+        .classList
+        .remove("hidden");
+
+
+        appLocked = true;
+
+
+    }
+
+    else{
+
+
+        openChat();
+
+
+    }
+
 
 }
