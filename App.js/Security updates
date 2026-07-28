@@ -1,0 +1,176 @@
+Add this near the top with your other global variables:
+// =====================================
+// APP LOCK
+// =====================================
+
+let appLocked = false;
+
+let currentUserId = null;
+Now add this function:
+// =====================================
+// UNLOCK APP
+// =====================================
+
+
+async function unlockApp(){
+
+
+    const pin = document
+    .getElementById("unlock-pin")
+    .value;
+
+
+    const response = await fetch(
+
+        `${API_URL}/security/unlock`,
+
+        {
+
+            method:"POST",
+
+            headers:{
+
+                "Content-Type":
+                "application/json"
+
+            },
+
+
+            body:JSON.stringify({
+
+                user_id:currentUserId,
+
+                pin:pin
+
+            })
+
+        }
+
+    );
+
+
+
+    const data = await response.json();
+
+
+
+    if(data.success){
+
+
+        document
+
+        .getElementById(
+            "app-lock-screen"
+        )
+
+        .classList
+
+        .add("hidden");
+
+
+
+        appLocked=false;
+
+
+    }
+
+    else{
+
+
+        document
+
+        .getElementById(
+            "unlock-message"
+        )
+
+        .innerHTML=
+
+        "Wrong PIN";
+
+
+    }
+
+
+}
+
+Place it in your app.js under a new section near your other UI functions (for example after dark mode functions and before WebRTC functions
+function lockApp(){
+
+
+    document
+
+    .getElementById(
+        "app-lock-screen"
+    )
+
+    .classList
+
+    .remove("hidden");
+
+
+    appLocked=true;
+
+
+}
+When the user logs in successfully in your existing login function:
+
+Find where you already save:
+username = data.username;
+and add this 
+currentUserId = data.user_id;
+also add this part if need verification 
+async function verifyAppPin(){
+
+
+    const pin =
+    document
+    .getElementById("unlock-pin")
+    .value;
+
+
+
+    const response =
+    await fetch(
+        `${API_URL}/verify-pin`,
+        {
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+
+            body:JSON.stringify({
+
+                username:username,
+
+                pin:pin
+
+            })
+
+        }
+    );
+
+
+
+    const result =
+    await response.json();
+
+
+
+    if(result.success){
+
+        unlockApp();
+
+    }
+
+    else{
+
+        alert(
+            "Wrong PIN"
+        );
+
+    }
+
+}
