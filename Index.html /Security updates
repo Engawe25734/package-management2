@@ -50,3 +50,14 @@ Place this inside the <body>, preferably right after your authentication section
     </div>
 
 </div>
+Step 4 — Add Logout button in index.html
+
+Inside your settings menu:
+
+<button onclick="logout()">
+
+🚪 Logout
+
+</button>
+
+
