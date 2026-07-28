@@ -1,0 +1,83 @@
+paste this at the top 
+from database import (
+    create_user,
+    get_user_by_phone,
+    update_user_pin,
+    enable_app_lock,
+    get_user_pin
+)
+add these below verif token
+# =====================================
+# SAVE APP PIN
+# =====================================
+
+def set_app_pin(
+    user_id,
+    pin
+):
+
+    pin_hash = hash_pin(pin)
+
+    update_user_pin(
+        user_id,
+        pin_hash
+    )
+
+    enable_app_lock(
+        user_id,
+        True
+    )
+
+    return {
+        "status": "success",
+        "message": "App lock enabled"
+    }
+
+
+# =====================================
+# VERIFY APP PIN
+# =====================================
+
+def unlock_app(
+    user_id,
+    pin
+):
+
+    data = get_user_pin(user_id)
+
+    if not data:
+        return False
+
+    pin_hash = data["pin_hash"]
+    enabled = data["app_lock"]
+
+    if enabled == 0:
+        return True
+
+    if not pin_hash:
+        return False
+
+    return verify_pin(
+        pin,
+        pin_hash
+    )
+    add this below verify password function
+    # =====================================
+# APP LOCK PIN
+# =====================================
+
+def hash_pin(pin: str):
+    """
+    Encrypt PIN before saving
+    """
+    return password_context.hash(pin)
+
+
+def verify_pin(pin, pin_hash):
+    """
+    Verify entered PIN
+    """
+    return password_context.verify(
+        pin,
+        pin_hash
+    )
