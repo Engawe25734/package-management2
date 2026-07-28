@@ -1,0 +1,19 @@
+CREATE TABLE IF NOT EXISTS users (
+
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+    username TEXT UNIQUE,
+
+    phone TEXT UNIQUE,
+
+    password_hash TEXT,
+
+    avatar TEXT DEFAULT '/static/default-avatar.png',
+
+    bio TEXT DEFAULT '',
+
+    pin_hash TEXT DEFAULT '',
+
+    app_lock INTEGER DEFAULT 0
+
+)
