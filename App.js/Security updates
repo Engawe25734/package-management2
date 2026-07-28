@@ -317,3 +317,16 @@ function logout(){
     location.reload();
 
 }
+Step 5 — Protect WebSocket connection
+
+Where you connect:
+new WebSocket(
+    `${WS_URL}/${username}`
+);
+Change to:
+@app.websocket("/ws/{username}")
+async def websocket_endpoint(
+    websocket:WebSocket,
+    username:str
+):
+
