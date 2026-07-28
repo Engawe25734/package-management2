@@ -1,0 +1,52 @@
+Place this inside the <body>, preferably right after your authentication section and before the main chat container.
+  <!-- =====================================
+     APP LOCK SCREEN
+===================================== -->
+
+<div id="app-lock-screen" class="hidden">
+
+    <div class="lock-card">
+
+        <img 
+        id="lock-avatar"
+        src="/static/default-avatar.png"
+        >
+
+        <h2>
+            ChatMe Locked
+        </h2>
+
+
+        <p>
+            Enter your PIN to continue
+        </p>
+
+
+        <input
+
+        type="password"
+
+        id="unlock-pin"
+
+        maxlength="6"
+
+        placeholder="Enter PIN"
+
+        >
+
+
+        <button
+        onclick="unlockApp()"
+        class="primary-btn">
+
+            Unlock
+
+        </button>
+
+
+        <p id="unlock-message"></p>
+
+
+    </div>
+
+</div>
